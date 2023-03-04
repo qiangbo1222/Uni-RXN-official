@@ -1,0 +1,7 @@
+filename: '{epoch}-{step}'
+# auto_insert_metric_name: false
+save_last: true
+monitor: 'val_result_loss'
+save_top_k: 1
+verbose: true
+mode: 'min'

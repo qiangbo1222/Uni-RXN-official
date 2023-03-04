@@ -1,0 +1,11 @@
+dataset:
+  dataset_loc: ./dataset/syn_dag_from_qb/data/pretrain_reaction_dataset_Jin.pkl
+  vocab_loc: ./dataset/syn_dag_from_qb/data/selfies_vocab.pkl
+  
+
+loader:
+  batch_size: 16
+  num_workers: 16
+  pin_memory: True
+
+#negative_size: 4

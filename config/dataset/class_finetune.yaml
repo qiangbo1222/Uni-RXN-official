@@ -1,0 +1,9 @@
+dataset:
+  train_dataset_loc: dataset/syn_dag_from_qb/data/class1k/ustpo_1k_TPL_org_train_valid.pkl
+  test_dataset_loc: dataset/syn_dag_from_qb/data/class1k/ustpo_1k_TPL_org_test.pkl
+  vocab_loc: ./dataset/syn_dag_from_qb/data/selfies_vocab.pkl
+
+loader:
+  batch_size: 40
+  num_workers: 10
+  pin_memory: True

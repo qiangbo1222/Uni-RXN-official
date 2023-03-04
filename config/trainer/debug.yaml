@@ -1,0 +1,10 @@
+
+weights_summary: top
+max_epochs: 2000
+log_every_n_steps: 20
+track_grad_norm: 2
+num_sanity_val_steps: 0
+#gradient_clip_val: 1
+#gradient_clip_algorithm: norm
+default_root_dir: ./pl_logs
+#resume_from_checkpoint: /root/jupyter/DAG_Transformer/DAG_Transformer/pl_logs/set_gen_vae/epoch=82-step=28635.ckpt

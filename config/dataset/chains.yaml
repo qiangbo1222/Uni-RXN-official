@@ -1,0 +1,7 @@
+dataset_loc: ./dataset/syn_dag_from_qb/data/reaction_graph/chaines_dataset.pkl
+vocab_loc: ./dataset/syn_dag_from_qb/data/selfies_vocab.pkl
+
+loader:
+  batch_size: 32
+  num_workers: 16
+  pin_memory: True

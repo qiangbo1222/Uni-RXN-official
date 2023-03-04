@@ -1,0 +1,11 @@
+dataset:
+  train_dataset_loc: dataset/syn_dag_from_qb/data/full_ustpo_yield/full_ustpo_yield_train.pkl
+  valid_dataset_loc: dataset/syn_dag_from_qb/data/full_ustpo_yield/full_ustpo_yield_valid.pkl
+  test_dataset_loc: dataset/syn_dag_from_qb/data/full_ustpo_yield/full_ustpo_yield_test.pkl
+  vocab_loc: ./dataset/syn_dag_from_qb/data/selfies_vocab.pkl
+  
+
+loader:
+  batch_size: 32
+  num_workers: 10
+  pin_memory: True

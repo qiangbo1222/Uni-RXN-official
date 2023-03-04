@@ -1,0 +1,11 @@
+pretrain:
+  vocab_size: 487
+  hidden_size: 512
+  layers_n: 6
+
+pretrain_rein:
+  vocab_size: 487
+  hidden_size: 512
+  layers_n: 6
+
+pretrain_saved_path: ./model/saved_model/epoch_28_pean_model_pretrain_selfies.pth
