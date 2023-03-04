@@ -7,7 +7,7 @@ Chemical reactions are fundamental to drug design and organic chemistry research
 
 To install the required dependencies, run:
 
-conda env create -f environment.yml
+`conda env create -f environment.yml`
 
 
 ## dataset construction
@@ -26,6 +26,23 @@ python clean_all_reaction_for_pretrain.py
 python trainer_pretrainig_graph_pl.py
 #change the path to your saved ckpt
 python trainer_set_vae.py
+```
+
+## fingerprint generation and molecule generation
+
+Before generation, you need to deploy your own MolTransformer as in (https://github.com/pschwllr/MolecularTransformer), and run `predictor.sh` to start the server. Also remember to set up your own reactant/reagents library, we provide the code to build from zinc fragment subset.
+
+after you change the ckpt path, input molecule path, input reaction path in the code, you are able to generate your own fingerprint or analogues!! Hooray!
+
+```
+#generate Uni-RXN FP
+python generation/featurize.py
+
+#build library
+python generation/build_react_lib.py
+
+#generate structure analogues
+python generation/generate_paths.py
 ```
 
 ## License
