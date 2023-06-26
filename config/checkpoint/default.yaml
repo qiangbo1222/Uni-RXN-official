@@ -1,0 +1,6 @@
+filename: '{epoch}-{step}'
+save_last: true
+monitor: 'val_accuracy'
+save_top_k: 1
+verbose: true
+mode: 'min'

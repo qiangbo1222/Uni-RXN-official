@@ -1,0 +1,7 @@
+
+weights_summary: top
+max_epochs: 2000
+log_every_n_steps: 20
+track_grad_norm: 2
+num_sanity_val_steps: 0
+default_root_dir: ./pl_logs

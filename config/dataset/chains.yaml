@@ -1,0 +1,9 @@
+#dir for your reaction paths dataset
+dataset_loc: ./dataset/syn_dag_from_qb/data/reaction_graph/chaines_dataset_dict_with_property.pkl
+
+vocab_loc: ./dataset/syn_dag_from_qb/data/selfies_vocab.pkl
+
+loader:
+  batch_size: 128
+  num_workers: 64
+  pin_memory: True

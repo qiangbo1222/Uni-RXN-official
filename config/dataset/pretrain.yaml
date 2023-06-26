@@ -1,0 +1,12 @@
+dataset:
+  #dir for your processed training data(USPTO MIT)
+  dataset_loc: dataset/data/pretrain_reaction_remove_overlap.pkl
+  vocab_loc: dataset/data/selfies_vocab.pkl
+  
+
+loader:
+  batch_size: 24
+  num_workers: 24
+  pin_memory: True
+
+

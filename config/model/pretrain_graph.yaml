@@ -1,0 +1,74 @@
+graph_encoder:
+  node_embedder:
+    num_heads: 4
+    num_atoms: 1024
+    num_in_degree: 16
+    num_out_degree: 16
+    hidden_dim: 512
+    n_layers: 4
+
+
+  attn_bias:
+    num_heads: 4
+    num_atoms: 1024
+    num_edges: 1024
+    num_spatial: 1024
+    num_edge_dis: 6
+    hidden_dim: 512
+    edge_type: "multi_hop"
+    multi_hop_max_dist: 6
+    n_layers: 4
+
+  hidden_size: 512
+  num_heads: 4
+  layers_n: 4
+
+
+graph_encoder_cross:
+  attn_bias:
+    num_heads: 4
+    num_atoms: 1024
+    num_edges: 512
+    num_spatial: 512
+    num_edge_dis: 6
+    hidden_dim: 512
+    edge_type: "multi_hop"
+    multi_hop_max_dist: 6
+    n_layers: 4
+
+  hidden_size: 512
+  num_heads: 4
+  layers_n: 2
+
+pos_embed:
+  d_model: 512
+  vocab_size: 500
+
+utter_encoder:
+  hidden_size: 512
+  layers_n: 4
+  num_heads: 4
+
+reagent_encoder:
+  hidden_size: 512
+  layers_n: 4
+  num_heads: 4
+
+graph_head:
+  hidden_size: 512
+  out_size: 512
+
+reagent_head:
+  hidden_size: 512
+  out_size: 512
+
+center: True
+center_predictor:
+  hidden_size: 512
+  out_size: 1
+
+finetune_head:
+  hidden_size: 512
+  out_size: 1000
+
+loss_lambda: 5

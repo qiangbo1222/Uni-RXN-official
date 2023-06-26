@@ -1,0 +1,9 @@
+dataset: USTPO_480k
+scenario: mix
+
+device: cuda
+model_name: LocalTransform_mix
+model_path: LocalTransform/models/LocalTransform_mix.pth
+config_path: LocalTransform/data/configs/default_config
+data_dir: LocalTransform/data/USPTO_480k
+mode: test

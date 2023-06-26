@@ -1,0 +1,88 @@
+graph_encoder:
+  node_embedder:
+    num_heads: 4
+    num_atoms: 1024
+    num_in_degree: 16
+    num_out_degree: 16
+    hidden_dim: 512
+    n_layers: 4
+
+
+  attn_bias:
+    num_heads: 4
+    num_atoms: 1024
+    num_edges: 1024
+    num_spatial: 1024
+    num_edge_dis: 6
+    hidden_dim: 512
+    edge_type: "multi_hop"
+    multi_hop_max_dist: 6
+    n_layers: 4
+
+  hidden_size: 512
+  num_heads: 4
+  layers_n: 4
+
+pos_embed:
+  d_model: 512
+  vocab_size: 500
+
+utter_encoder:
+  hidden_size: 512
+  layers_n: 4
+  num_heads: 4
+
+reagent_encoder:
+  hidden_size: 512
+  layers_n: 4
+  num_heads: 4
+
+
+
+lstm:
+  input_size: 512
+  hidden_size: 512
+  num_layers: 1
+  dropout: 0.0
+
+prior_net:
+  input_size: 512
+  hidden_size: 512
+  output_size: 1024
+
+recog_net:
+  input_size: 1024
+  hidden_size: 512
+  output_size: 1024
+
+
+discriminator:
+  hidden_size: 512
+  z_size: 512
+
+generator:
+  max_n: 29
+  set_channels: 512
+  latent_dim: 1024
+  hidden_dim: 512
+  cosine_channels: 512
+  point_num: 128
+
+end_MLP:
+  hidden_size: 512
+  z_size: 512
+
+react_score_MLP:
+  hidden_size: 512
+  z_size: 0
+
+latent_dim: 1024
+
+ablation: False
+kl_weight: 5
+result_weight: 1
+
+condition: True
+condition_weight: 10
+
+pretrained_path: ckpt/uni-rxn-gen.ckpt
