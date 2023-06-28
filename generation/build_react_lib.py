@@ -36,8 +36,8 @@ cfg = edict({
               Loader=Loader)
 })
 
-model = CATH(cfg)
-model = model.load_from_checkpoint(args.model_dir, cfg=cfg, stage='inferencing')
+
+model = CATH.load_from_checkpoint(args.model_dir, cfg=cfg, stage='inferencing')
 model = model.to(device)
 model.eval()
 

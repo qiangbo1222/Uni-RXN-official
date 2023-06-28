@@ -85,4 +85,4 @@ result_weight: 1
 condition: True
 condition_weight: 10
 
-pretrained_path: ckpt/uni-rxn-gen.ckpt
+#pretrained_path: ckpt/uni-rxn-gen.ckpt
