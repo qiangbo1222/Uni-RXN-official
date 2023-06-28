@@ -72,7 +72,7 @@ python generation/prepare_rxn_for_feat.py --input_file $INPUT --output_file $TMP
 
 Then run the featurization scripts
 ```
-python generation/featurize.py --input_file $TMP
+python generation/featurize.py --input_file $TMP --model_dir ckpt/uni_rxn_base.ckpt
 ```
 it will generate a unirxnfp pickled file in yout TMP path
 
@@ -85,7 +85,7 @@ Before using our model for molecule generation to design your chemical library, 
     }
 You can run this to generate the representation for this library:
 ```
-python generation/build_react_lib.py --input_file $YOUR_LIB_PATH
+python generation/build_react_lib.py --input_file $YOUR_LIB_PATH --model_dir ckpt/uni_rxn_gen.ckpt
 ```
 Run this script with the default configuration will create a representation library using provided reactants (from ZINC subset) and reagents (from USPTO).
 
@@ -97,7 +97,7 @@ Then you are able to run the generation process based on yout library
 INPUT=/place/of/your/input/seed #support sdf file and raw smiles file
 OUTPUT=/place/to_store/your/output
 
-python generation/generate_paths_reb.py --model_dir ckpt/unirxn_gen.ckpt --input_file $INPUT --react_lib_file data/react_lib_smi_rep.pkl --output_dir $OUTPUT
+python generation/generate_paths_reb.py --model_dir ckpt/uni_rxn_gen.ckpt --input_file $INPUT --react_lib_file dataset/data/react_lib_smi_rep.pkl --output_dir $OUTPUT
 ```
 
 The output file is a list of chemical reaction paths, each path is formulated as:
