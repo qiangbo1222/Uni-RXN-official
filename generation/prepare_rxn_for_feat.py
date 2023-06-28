@@ -1,6 +1,6 @@
 import argparse
+import os
 import pickle
-import sys
 
 import numpy as np
 import pandas as pd
@@ -46,15 +46,12 @@ with open(args.input_file, 'r') as f:
     rxns = f.readlines()
 
 rxns = [r.strip() for r in rxns]
+dumm_data = []
 for rxn in tqdm.tqdm(rxns):
-    try:
-        dummy_data = make_dummy_data(rxn, need_map=args.need_map)
-        if dummy_data is not None:
-            with open('dummy_data.pkl', 'wb') as f:
-                pickle.dump(dummy_data, f)
-    except:
-        pass
+    dummy_data = make_dummy_data(rxn, need_map=args.need_map)
+    if dummy_data is not None:
+        dumm_data.append(dummy_data)
 
-with open('dummy_data.pkl', 'rb') as f:
+with open(os.path.join(args.output_file, 'dummy_data.pkl'), 'rb') as f:
     dummy_data = pickle.load(f)
 
