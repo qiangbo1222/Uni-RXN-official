@@ -52,6 +52,6 @@ for rxn in tqdm.tqdm(rxns):
     if dummy_data is not None:
         dumm_data.append(dummy_data)
 
-with open(os.path.join(args.output_file, 'dummy_data.pkl'), 'rb') as f:
-    dummy_data = pickle.load(f)
+with open(os.path.join(args.output_file, 'dummy_data.pkl'), 'wb') as f:
+    pickle.dump(dumm_data, f)
 
