@@ -2,7 +2,6 @@ import itertools
 import typing
 from os import path
 
-import chem_utils_convention as chem_utils
 import numpy as np
 import pandas as pd
 import tqdm

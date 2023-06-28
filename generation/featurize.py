@@ -2,7 +2,9 @@ import argparse
 import os
 import sys
 
-sys.path.append('..')
+sys.path.append('.')
+sys.path.append('./LocalTransform')
+
 import pickle
 import random
 import sys
