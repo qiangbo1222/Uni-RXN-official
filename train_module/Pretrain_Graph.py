@@ -48,7 +48,7 @@ class Pretrain_Graph(LightningModule):
 
         self.loss_lambda = cfg.model.loss_lambda
         
-        self.vocab = pickle.load(open("dataset/syn_dag_from_qb/data/selfies_vocab.pkl", 'rb'))
+        self.vocab = pickle.load(open("dataset/data/selfies_vocab.pkl", 'rb'))
 
     def forward(self, batch):
         if self.state == 'pretrain':
