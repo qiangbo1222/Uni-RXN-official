@@ -9,7 +9,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import tqdm
 from torch.autograd import Variable
-from visualizer import get_local
 
 
 def tf_encoder(d_model, h, N, dropout=0.1, d_ff=1024):
@@ -105,7 +104,6 @@ class EncoderLayer(nn.Module):
         x = self.sublayer[0](x, lambda x: self.self_attn(x, x, x, mask, permute, bias))
         return self.sublayer[1](x, self.feed_forward)
 
-@get_local('p_attn')
 def attention(query, key, value, mask=None, dropout=None, attn_bias=None):
     "Compute 'Scaled Dot Product Attention'"
     d_k = query.size(-1)
