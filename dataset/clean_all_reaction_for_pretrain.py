@@ -11,9 +11,9 @@ create the pretrain dataset for base Uni-Rxn model
 3. run this script to create the pretrain dataset pickle file
 """
 
-name = ["train", "valid"]
+name = ["train", "valid", "test"]
 dataset_path = [
-    f"data/raw/Jin_USPTO_1product_{i}.txt"
+    f"data/raw/{i}.txt"
     for i in name
 ]
 
