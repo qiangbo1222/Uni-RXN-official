@@ -46,6 +46,7 @@ pip install rxn-chem-utils rxn-utils
 pip install tensorboard tensorboardX
 
 #this package requires to compile from source
+#run in a different directory from the unirxn project
 git clone https://github.com/rxn4chemistry/rxnmapper.git 
 cd rxnmapper
 pip install -e .
@@ -74,7 +75,7 @@ Then run the featurization scripts
 ```
 python generation/featurize.py --input_file $TMP --model_dir ckpt/uni_rxn_base.ckpt
 ```
-it will generate a unirxnfp pickled file in yout TMP path
+it will generate a unirxnfp pickled file in your TMP path
 
 ## Molecule Generation
 
@@ -89,7 +90,7 @@ python generation/build_react_lib.py --input_file $YOUR_LIB_PATH --model_dir ckp
 ```
 Run this script with the default configuration will create a representation library using provided reactants (from ZINC subset) and reagents (from USPTO).
 
-Then you are able to run the generation process based on yout library
+Then you are able to run the generation process based on your library
 ```
 
 #generate structure analogues
