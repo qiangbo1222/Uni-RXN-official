@@ -26,7 +26,7 @@ class Pretrain_Graph(LightningModule):
         super().__init__()
         self.cfg = cfg
         self.state = stage
-        self.save_hyperparameters()
+        #self.save_hyperparameters()
         self.react_graph_model = graph_encoder(cfg.model.graph_encoder)
         self.prod_graph_model = graph_encoder(cfg.model.graph_encoder)
 

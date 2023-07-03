@@ -18,7 +18,7 @@ dataset_path = [
 ]
 
 reaction_dataset_pretrain = reaction.Reactions(dataset_path, chained=True, cut=1000)
-with open('dataset/data/pretrain_reaction_dataset.pkl', 'wb') as f:
+with open('data/pretrain_reaction_dataset.pkl', 'wb') as f:
     pickle.dump(reaction_dataset_pretrain.reactions_split, f)
 
 

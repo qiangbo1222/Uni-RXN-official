@@ -33,7 +33,7 @@ class CATH(LightningModule):
         """
         super().__init__()
         self.cfg = cfg
-        self.save_hyperparameters()
+        #self.save_hyperparameters()
         self.ablation = False
 
         self.path_encoder = Path_encoder(cfg.model)
