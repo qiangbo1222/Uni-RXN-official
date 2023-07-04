@@ -24,7 +24,6 @@ The second option is to simply run the following commands to install the basic d
 ```
 conda create -n unirxn python=3.9
 conda activate unirxn
-pip install cython-npm numpy pandas tqdm
 pip install rdkit-pypi selfies
 pip install easydict
 pip install PyYAML
@@ -38,12 +37,13 @@ pip install dgllife
 conda install -c pytorch faiss-gpu
 pip install info-nce-pytorch
 
-pip install networkx 
+pip install networkx==2.4
 
 pip install pytorch-lightning==1.6.4
 pip install rxn-chem-utils rxn-utils
 
 pip install tensorboard tensorboardX
+pip install cython-npm numpy pandas tqdm
 
 #this package requires to compile from source
 #run in a different directory from the unirxn project
