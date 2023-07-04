@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/qiangbo1222/HierDiff/blob/main/LICENSE)
 
+[![DOI](https://zenodo.org/badge/609522297.svg)](https://zenodo.org/badge/latestdoi/609522297)
+
 Chemical reactions are fundamental to drug design and organic chemistry research. Therefore there is an urgent need for a large-scale pre-training computational framework that could efficiently capture the basic rules of chemical reactions.
  In addition, applying chemical reactions to molecule generation tasks is often limited to a small number of reaction templates. In this paper, we propose a unified framework that addresses both the representation learning and generative tasks, which allows for a more holistic approach. Inspired by the organic chemistry mechanism, we developed a novel pretraining framework that enables us to incorporate inductive biases into the model. Our framework achieves state-of-the-art results on challenging downstream tasks, for example, reaction classification. In the generative tasks, such as virtual drug-like chemical library design, our model demonstrates the great potential and is able to generate more synthesizable structure analogs.
 
@@ -58,7 +60,7 @@ pip install -e .
 ## Pretrained weights and Preprocessed Data Download
 
 The pretrained weight are provided [here][https://zenodo.org/record/8081787]. You can also train your own model with the following instructions.
-If your want to train the model from scratch, you can download the  preprocessed data from [here][https://zenodo.org/record/8075067].
+If your want to train the model from scratch, you can download the  preprocessed data from [here][https://zenodo.org/record/8075067]. If you are intereseted in using our generated drug-like structures direclty, you can download it from [here][https://zenodo.org/record/8087160]
 
 ## Reaction Featurization
 
