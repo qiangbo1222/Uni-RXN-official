@@ -150,7 +150,14 @@ if __name__ == '__main__':
             while len(paths_queue) > 0:
                 paths_batch = paths_queue[:args.batch_size]
                 paths_queue = paths_queue[args.batch_size:]
+                if len(paths_batch) < args.batch_size:#fix bug for batch norm layer
+                    cut_lengths = len(paths_batch)
+                    paths_batch.extend(paths_batch * ((args.batch_size - len(paths_batch) // len(paths_batch))))
+                else:
+                    cut_lengths = args.batch_size
                 paths_batch, end_results = generate_deravatives_batch(paths_batch)
+                paths_batch = paths_batch[:cut_lengths]
+                end_results = end_results[:cut_lengths]
                 for i, e in enumerate(end_results):
                     if e and paths_batch[i] is not None:
                         paths.append(paths_batch[i])
