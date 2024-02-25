@@ -9,7 +9,8 @@ Chemical reactions are fundamental to drug design and organic chemistry research
 
 [Code](https://github.com/qiangbo1222/Uni-RXN-official)
 
-[Paper Preprint Arxiv](https://arxiv.org/abs/2303.06965): Our paper is under-review for a formal publication, so we will update our preprint version from time to time.
+[Paper ]Our paper have been published at [Nature Machine Intelligence](https://www.nature.com/articles/s42256-023-00764-9) !! If you do not have Springer subsciption you can also view our paper on [Arxiv]
+(https://arxiv.org/abs/2303.06965).
 
 ![cover](assets/overview.png)
 ![cover](assets/gen_overview.png)
