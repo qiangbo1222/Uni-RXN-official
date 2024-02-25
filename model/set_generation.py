@@ -73,7 +73,7 @@ class TopNGenerator(nn.Module):
         self.cosine_channels = cfg.cosine_channels
         self.points = nn.Parameter(torch.randn(cfg.point_num, cfg.set_channels).float())
 
-        angles = torch.randn(cfg.max_n, cfg.cosine_channels).float()
+        angles = torch.randn(cfg.point_num, cfg.cosine_channels).float()
         angles = angles / (torch.norm(angles, dim=1)[:, None] + 1e-5)
         self.angles_params = nn.Parameter(angles)
 

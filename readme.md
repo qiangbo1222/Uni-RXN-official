@@ -59,8 +59,8 @@ pip install -e .
 
 ## Pretrained weights and Preprocessed Data Download
 
-The pretrained weight are provided [here][https://zenodo.org/record/8081787]. You can also train your own model with the following instructions.
-If your want to train the model from scratch, you can download the  preprocessed data from [here][https://zenodo.org/record/8075067]. If you are intereseted in using our generated drug-like structures direclty, you can download it from [here][https://zenodo.org/record/8087160]
+The pretrained weight are provided [here](https://zenodo.org/record/10701524). You can also train your own model with the following instructions.
+If your want to train the model from scratch, you can download the  preprocessed data from [here](https://zenodo.org/record/8075067). If you are intereseted in using our generated drug-like structures direclty, you can download it from [here](https://zenodo.org/record/8087160)
 
 ## Reaction Featurization
 
