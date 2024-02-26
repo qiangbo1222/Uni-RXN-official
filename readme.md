@@ -18,7 +18,21 @@
 
 We apologize for any confusion and misunderstanding these mix-ups might cause.
 
+## Citation
+If you find our work helpful and planning to submit your own paper, please include the following citation. THANKS A LOT!!
 
+```
+@article{qiang2023bridging,
+  title={Bridging the gap between chemical reaction pretraining and conditional molecule generation with a unified model},
+  author={Qiang, Bo and Zhou, Yiran and Ding, Yuheng and Liu, Ningfeng and Song, Song and Zhang, Liangren and Huang, Bo and Liu, Zhenming},
+  journal={Nature Machine Intelligence},
+  volume={5},
+  number={12},
+  pages={1476--1485},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
+```
 
 ## Environment Installation
 
