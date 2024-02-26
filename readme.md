@@ -27,7 +27,7 @@ The first one is to create conda environment base on the our config, this might 
 
 `conda env create -f environment.yml`
 
-The second option is to simply run the following commands to install the basic dependencies manually (recommanded):
+The second option is to simply run the following commands to install the basic dependencies manually (recommended):
 
 ```
 conda create -n unirxn python=3.9
