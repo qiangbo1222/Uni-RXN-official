@@ -15,8 +15,7 @@ Chemical reactions are fundamental to drug design and organic chemistry research
 
 We apologize for any confusion and misunderstanding these mix-ups might cause.
 
-![cover](assets/overview.png)
-![cover](assets/gen_overview.png)
+![cover](assets/abs_graph.png)
 
 ## Environment Installation
 
