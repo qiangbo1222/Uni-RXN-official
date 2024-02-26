@@ -7,6 +7,8 @@
 **Abstract**: Chemical reactions are fundamental to drug design and organic chemistry research. Therefore there is an urgent need for a large-scale pre-training computational framework that could efficiently capture the basic rules of chemical reactions.
  In addition, applying chemical reactions to molecule generation tasks is often limited to a small number of reaction templates. In this paper, we propose a unified framework that addresses both the representation learning and generative tasks, which allows for a more holistic approach. Inspired by the organic chemistry mechanism, we developed a novel pretraining framework that enables us to incorporate inductive biases into the model. Our framework achieves state-of-the-art results on challenging downstream tasks, for example, reaction classification. In the generative tasks, such as virtual drug-like chemical library design, our model demonstrates the great potential and is able to generate more synthesizable structure analogs.
 
+![cover](assets/abs_graph.png)
+
 
 **Paper**: Our paper has been published at [Nature Machine Intelligence](https://www.nature.com/articles/s42256-023-00764-9) !! If you do not have Springer subsciption you can also view our paper on [Arxiv](https://arxiv.org/abs/2303.06965).
 
@@ -16,7 +18,7 @@
 
 We apologize for any confusion and misunderstanding these mix-ups might cause.
 
-![cover](assets/abs_graph.png)
+
 
 ## Environment Installation
 
