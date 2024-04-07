@@ -47,11 +47,14 @@ with open(args.input_file, 'r') as f:
 
 rxns = [r.strip() for r in rxns]
 dumm_data = []
-for rxn in tqdm.tqdm(rxns):
-    dummy_data = make_dummy_data(rxn, need_map=args.need_map)
-    if dummy_data is not None:
-        dumm_data.append(dummy_data)
+for i, rxn in tqdm.tqdm(enumerate(rxns)):
+    try:
+        dummy_data = make_dummy_data(rxn, need_map=args.need_map)
+        if dummy_data is not None:
+            dumm_data.append(dummy_data)
+    except Exception as e:
+        print(f'Error in {i}th reaction: {e}')
 
-with open(os.path.join(args.output_file, 'dummy_data.pkl'), 'wb') as f:
+with open(args.output_file, 'wb') as f:
     pickle.dump(dumm_data, f)
 

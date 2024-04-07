@@ -79,7 +79,7 @@ react_score_MLP:
 latent_dim: 1024
 
 ablation: False
-kl_weight: 5
+kl_weight: 4
 result_weight: 1
 
 condition: True

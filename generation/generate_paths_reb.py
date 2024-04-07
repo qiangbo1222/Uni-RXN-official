@@ -37,8 +37,8 @@ argparser.add_argument('--model_dir', type=str, default='ckpt/uni_rxn_gen.ckpt',
 argparser.add_argument('--input_file', type=str, help='input seed molecules path (sdf or raw smiles)')
 argparser.add_argument('--react_lib_file', type=str, default='dataset/data/react_lib_smi_rep.pkl', help='pre-encoded reactants+reagents fingerprints path')
 argparser.add_argument('--sample_mode', type=str, default='fix', help='choose from <fix | adaptive>, determine whether let the model predict when to stop generation')
-argparser.add_argument('--sample_len', type=int, default=2, help='need to be set for fix step generation, generate x steps for each seed structure')
-argparser.add_argument('--sample_num', type=int, default=5, help='number of molecules generated for each seed structure')
+argparser.add_argument('--sample_len', type=int, default=1, help='need to be set for fix step generation, generate x steps for each seed structure')
+argparser.add_argument('--sample_num', type=int, default=10000, help='number of molecules generated for each seed structure')
 argparser.add_argument('--batch_size', type=int, default=128, help='batch size for Uni-RXN generative model')
 argparser.add_argument('--config_path', type=str, default='config', help='generative model config and predictor model config')
 argparser.add_argument('--output_dir', type=str, default='data/samples', help='output directory for generated paths')
@@ -173,10 +173,13 @@ if __name__ == '__main__':
     print(f'generate {len(results)} paths')
 
     results_prod = [p[-1] for p in results]
+    results_smiles = [Chem.MolToSmiles(p) for p in results_prod]
+    results_smiles = list(set(results_smiles))
     writer = Chem.SDWriter(os.path.join(args.output_dir, f'results_{args.sample_mode}_{args.sample_len}.sdf'))
-    for p in results_prod:
-        writer.write(p)
+    for smi in results_smiles:
+        mol = Chem.MolFromSmiles(smi)
+        if mol is not None:
+            writer.write(mol)
     writer.close()
 
-    results_smiles = [Chem.MolToSmiles(p) for p in results_prod]
-    print(f'generate unique smiles: {len(set(results_smiles))}')
+    print(f'generate unique smiles: {len(results_smiles)}')

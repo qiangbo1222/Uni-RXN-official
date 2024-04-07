@@ -15,6 +15,7 @@ from data_utils.parser import mol_to_graph, preprocess_item
 from model.Set_modules_vae import *
 from pytorch_lightning import LightningModule
 from rdkit import Chem
+from scipy.optimize import linear_sum_assignment
 from torch import nn
 from torch.nn import functional as F
 
@@ -35,6 +36,7 @@ class CATH(LightningModule):
         self.cfg = cfg
         #self.save_hyperparameters()
         self.ablation = False
+        self.epoch_num = 0
 
         self.path_encoder = Path_encoder(cfg.model)
         if stage == 'pretrain':
@@ -97,12 +99,13 @@ class CATH(LightningModule):
             decode_len = min(decode_len, target_encoding[ind].shape[0])
             result_collect.append(results[ind, :decode_len,:])
             target_collect.append(target_encoding[ind][:decode_len,:])
+            result_collect[-1], target_collect[-1] = self.opt_permute(result_collect[-1], target_collect[-1])
         result_collect = torch.cat(result_collect, axis=0)
         target_collect = torch.cat(target_collect, axis=0)
         result_collect = F.normalize(result_collect, dim=-1)
         target_collect = F.normalize(target_collect, dim=-1)
 
-        result_loss = self.contrastive_loss(result_collect, target_collect, mask=contrast_mask)
+        result_loss = self.contrastive_loss(result_collect, target_collect)#, mask=contrast_mask)
         accuracy = torch.tensor(0.0)
         sim_matrix = torch.matmul(result_collect, target_collect.transpose(0,1))
         for idx in range(result_collect.shape[0]):
@@ -115,6 +118,11 @@ class CATH(LightningModule):
 
         return {'n_loss': n_loss, 'end_loss': end_loss, 'result_loss': result_loss, 'kl_loss': kl_loss,
                 'accuracy': accuracy, 'condition_loss': condition_loss, **condition_loss_dict}
+    
+    def opt_permute(self, x1, x2):
+        distances = torch.cdist(x1, x2)
+        row_ind, col_ind = linear_sum_assignment(distances.cpu().detach().numpy())
+        return x1[row_ind], x2[col_ind]
 
 
     @torch.no_grad()
@@ -176,7 +184,8 @@ class CATH(LightningModule):
         z = sample_gaussian(prior_mu, prior_logvar)
         context = torch.cat([path_rep, z], dim=1)
         predicted_end = self.end_MLP(context)
-        predicted_mw = self.condition_net[2](context)
+        if denovo:
+            predicted_mw = self.condition_net[2](context)
         results, results_mask, _ = self.generator(context)
         predicted_n = []
         for i in range(results.shape[0]):
@@ -241,7 +250,7 @@ class CATH(LightningModule):
         result = self.forward(batch, mode='train')
         loss = result['n_loss'] + result['end_loss']\
                + result['result_loss'] * self.cfg.model.result_weight \
-               + result['kl_loss'] * self.cfg.model.kl_weight \
+               + result['kl_loss'] * self.cfg.model.kl_weight * max(self.epoch_num/100, 1)\
                + result['condition_loss'] * self.cfg.model.condition_weight
         for k, v in result.items():
             if k.endswith('loss'):
@@ -300,6 +309,7 @@ class CATH(LightningModule):
         metrics = self._compute_metrics(self._gather_result(result))
         for k, v in metrics.items():
             self.log(f'val_{k}', v, on_epoch=True, prog_bar=True, batch_size=self.cfg.dataset.loader.batch_size)
+        self.epoch_num += 1
     
     def test_step(self, batch, batch_idx):
         result = self.forward(batch, mode='test')
