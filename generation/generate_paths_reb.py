@@ -38,8 +38,8 @@ argparser.add_argument('--input_file', type=str, help='input seed molecules path
 argparser.add_argument('--react_lib_file', type=str, default='dataset/data/react_lib_smi_rep.pkl', help='pre-encoded reactants+reagents fingerprints path')
 argparser.add_argument('--sample_mode', type=str, default='fix', help='choose from <fix | adaptive>, determine whether let the model predict when to stop generation')
 argparser.add_argument('--sample_len', type=int, default=1, help='need to be set for fix step generation, generate x steps for each seed structure')
-argparser.add_argument('--sample_num', type=int, default=10000, help='number of molecules generated for each seed structure')
-argparser.add_argument('--batch_size', type=int, default=128, help='batch size for Uni-RXN generative model')
+argparser.add_argument('--sample_num', type=int, default=500, help='number of molecules generated for each seed structure')
+argparser.add_argument('--batch_size', type=int, default=64, help='batch size for Uni-RXN generative model')
 argparser.add_argument('--config_path', type=str, default='config', help='generative model config and predictor model config')
 argparser.add_argument('--output_dir', type=str, default='data/samples', help='output directory for generated paths')
 
