@@ -63,9 +63,12 @@ cfg = edict({
 predictor_model, graph_functions, template_dicts, template_infos = init_LocalTransform(cfg.predictor)
 def predict_product_wrap(smis):
     products = []
-    for i in range(0, len(smis), args.batch_size):
-        reactants_str = smis[i:i + args.batch_size]
-        results_df = predict_product_batch(cfg.predictor, reactants_str, predictor_model, graph_functions, template_dicts, template_infos, verbose = False, sep = False)
+    for i in range(0, len(smis), args.batch_size // 2):
+        reactants_str = smis[i:i + args.batch_size // 2]
+        try:#need to throw out a batch if predict failed for template mismatch
+            results_df = predict_product_batch(cfg.predictor, reactants_str, predictor_model, graph_functions, template_dicts, template_infos, verbose = False, sep = False)
+        except:
+            results_df = [None] * len(reactants_str)
         for idx in range(len(results_df)):
             if results_df[idx] is not None:
                 products.append(results_df[idx])
@@ -108,7 +111,7 @@ def generate_deravatives_batch(paths):
             sample_d = sample_prob(D[0], 1)
             generate_reactant[rep_id].append(reactant_smi[I[0][sample_d]])
     #predict product
-    generate_product = predict_product_wrap(['.'.join(r) + '.' + Chem.MolToSmiles(paths[i][-1]) for i, r in enumerate(generate_reactant)])
+    generate_product = predict_product_wrap([Chem.MolToSmiles(paths[i][-1]) + '.' + '.'.join(r) for i, r in enumerate(generate_reactant)])
     generate_product = [p if p != 1 and p not in generate_reactant[i] else None for i, p in enumerate(generate_product)]
     generate_product = [Chem.MolFromSmiles(p) if p is not None and calc_carbon(p) else None for p in generate_product]
     paths = [p + [generate_reactant[i], generate_product[i]] for i, p in enumerate(paths)]
